@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-COompatible" content="IE=edge">
+<meta name="viewport" content="widh=device-widht, initial-scale=1.0">
+<title>Base de datos</title>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</head>
+<body>
+<h1>TRABAJANDO CON JSON</h1>
+<form action="sabaduky.php" method="post">
+	<table>
+		<tr><td>Name</td><td><input type="text" name="name"></td></tr>
+		<tr><td>Edad</td><td><input type="text" name="edad"></td></tr>
+		<tr><td>Identidad Secreta</td><td><input type="text" name="identidadsecreta"></td></tr>
+		<tr><td>Poderes</td><td><input type="text" name="poderes"></td></tr>
+		<tr><input type="submit" name="submit" value="Enter"></td></tr>
+	</table>
+<table id="table">
+<tr>
+<th>Nombre</th>
+<th>Edad</th>
+<th>Identidad Secreta</th>
+<th>Poderes</th>
+</tr>
+<script>
+$(document).ready(function(){
+$.getJSON("sabaduky.json", function(data){
+var heroe='';
+$.each(data,function(key,value){
+heroe+='<tr>';
+heroe+='<td>'+ value.name +'</td>';
+heroe+='<td>'+ value.edad +'</td>';
+heroe+='<td>'+ value.identidadsecreta +'</td>';
+heroe+='<td>'+ value.poderes +'</td>';
+});
+$('#table').append(heroe);
+});
+});
+</script>
+</table>
+</body>
+</html>
